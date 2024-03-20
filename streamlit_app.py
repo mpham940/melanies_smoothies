@@ -29,6 +29,9 @@ if ingredients_list: # is not null
     ingredients_string = ""
     for fruit in ingredients_list:
         ingredients_string += fruit + " "
+        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        # put the json data in a dataframe
+        fv_df = st.dataframe(fruityvice_response.json(), use_container_width=True)
 
     #st.write(ingredients_string)
 
@@ -43,6 +46,4 @@ if ingredients_list: # is not null
         session.sql(my_insert_stmt).collect()
         st.success(f"Your Smoothie is ordered, {name_on_order}!", icon="✅")
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-# put the json data in a dataframe
-fv_df = st.dataframe(fruityvice_response.json(), use_container_width=True)
+
