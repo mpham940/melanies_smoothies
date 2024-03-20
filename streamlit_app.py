@@ -44,4 +44,5 @@ if ingredients_list: # is not null
         st.success(f"Your Smoothie is ordered, {name_on_order}!", icon="✅")
 
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response)
+# put the json data in a dataframe
+fv_df = st.dataframe(fruityvice_response.json(), use_container_width=True)
