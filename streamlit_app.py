@@ -29,7 +29,8 @@ if ingredients_list: # is not null
     ingredients_string = ""
     for fruit in ingredients_list:
         ingredients_string += fruit + " "
-        fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+        st.subheader(f"{fruit} Nutrition Information")
+        fruityvice_response = requests.get(f"https://fruityvice.com/api/fruit/{fruit}")
         # put the json data in a dataframe
         fv_df = st.dataframe(fruityvice_response.json(), use_container_width=True)
 
